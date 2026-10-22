@@ -5,8 +5,8 @@
 | 批次 | 范围 | 分支 | 状态 |
 | --- | --- | --- | --- |
 | 1 | 项目基础、配置与数据类型、配置测试 | `feat/project-foundation` | 已合并 |
-| 2 | 权限策略、记忆、快照、代码索引、Skill 与提示上下文 | `feat/context-and-safety` | 当前发布批次 |
-| 3 | 模型客户端、图片、联网与本地工具执行 | `feat/model-and-tools` | 未发布 |
+| 2 | 权限策略、记忆、快照、代码索引、Skill 与提示上下文 | `feat/context-and-safety` | 已合并 |
+| 3 | 模型客户端、图片、联网与本地工具执行 | `feat/model-and-tools` | 当前发布批次 |
 | 4 | ReAct、规划执行、多 Agent 编排与 SDK | `feat/agent-orchestration` | 未发布 |
 | 5 | MCP、初始化装配、Runtime API 与后台任务 | `feat/mcp-and-runtime` | 未发布 |
 | 6 | 交互式终端、渲染、命令入口与完整使用文档 | `feat/interactive-cli` | 未发布 |
