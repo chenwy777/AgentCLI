@@ -4,7 +4,7 @@ AgentCLI 是使用 Python 实现的终端 AI Agent 项目。现有本地实现�
 
 ## 当前发布范围
 
-当前 `main` 已导入前三批模块：
+当前 `main` 已导入前四批模块：
 
 - Python 项目结构、依赖声明与锁定文件。
 - 配置模型及加载逻辑：默认值、用户配置、项目配置、`.env`、命令行覆盖和进程环境变量。
@@ -18,8 +18,11 @@ AgentCLI 是使用 Python 实现的终端 AI Agent 项目。现有本地实现�
 - 本地及远程图片引用处理，并为不支持视觉输入的模型生成文字说明。
 - 网页搜索、公开网页抓取与本地网络地址访问限制。
 - 文件读写、目录浏览、代码检索、命令执行、记忆与 Skill 加载等内置工具。
+- 单 Agent 查询循环，以及工具调用结果回传和多轮执行。
+- Plan-and-Execute 任务图、并行任务批次和执行结果汇总。
+- Planner、Worker、Reviewer 多 Agent 编排及可嵌入 Python 项目的 SDK。
 
-交互式 CLI、Agent 编排、MCP 与 Runtime API 尚未导入当前分支；本批次仍不提供 `agentcli` 终端命令。后续安排见 [分批发布计划](docs/release-plan.md)。
+交互式 CLI、MCP 与 Runtime API 尚未导入当前分支；本批次仍不提供 `agentcli` 终端命令。后续安排见 [分批发布计划](docs/release-plan.md)。
 
 ## 开发与验证
 
@@ -45,6 +48,16 @@ from agentcli.config import load_config
 config = load_config(project_root=".")
 print(config.llm.provider)
 print(config.llm.model)
+```
+
+也可以在 Python 中创建默认查询引擎：
+
+```python
+from agentcli.sdk import create_default_engine
+
+engine = create_default_engine(".")
+result = engine.ask_complete("读取项目结构并给出摘要")
+print(result.text)
 ```
 
 配置文件位于 `~/.agentcli/config.json` 和项目内的 `.agentcli/config.json`。环境变量使用 `AGENTCLI_` 前缀；提供方专用密钥变量（如 `DEEPSEEK_API_KEY`）也受支持。
