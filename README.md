@@ -4,7 +4,7 @@ AgentCLI 是使用 Python 实现的终端 AI Agent 项目。现有本地实现�
 
 ## 当前发布范围
 
-当前 `main` 已导入前四批模块：
+当前 `main` 已导入前五批模块：
 
 - Python 项目结构、依赖声明与锁定文件。
 - 配置模型及加载逻辑：默认值、用户配置、项目配置、`.env`、命令行覆盖和进程环境变量。
@@ -21,8 +21,10 @@ AgentCLI 是使用 Python 实现的终端 AI Agent 项目。现有本地实现�
 - 单 Agent 查询循环，以及工具调用结果回传和多轮执行。
 - Plan-and-Execute 任务图、并行任务批次和执行结果汇总。
 - Planner、Worker、Reviewer 多 Agent 编排及可嵌入 Python 项目的 SDK。
+- MCP 客户端、内置工具 MCP 服务端，以及 stdio 和 Streamable HTTP 接入。
+- 本地 Runtime API、事件流与基于 SQLite 的持久后台任务队列。
 
-交互式 CLI、MCP 与 Runtime API 尚未导入当前分支；本批次仍不提供 `agentcli` 终端命令。后续安排见 [分批发布计划](docs/release-plan.md)。
+交互式 CLI 尚未导入当前分支；本批次仍不提供 `agentcli` 终端命令。后续安排见 [分批发布计划](docs/release-plan.md)。
 
 ## 开发与验证
 
