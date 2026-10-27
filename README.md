@@ -1,5 +1,7 @@
 # AgentCLI
 
+[![CI](https://github.com/chenwy777/AgentCLI/actions/workflows/ci.yml/badge.svg)](https://github.com/chenwy777/AgentCLI/actions/workflows/ci.yml)
+
 AgentCLI Python 是一个运行在终端里的 AI Agent CLI，面向真实项目开发场景：读写文件、搜索代码、执行命令、联网检索、调用 MCP 工具、保存记忆、生成快照、恢复现场，并通过 Runtime API 对外提供线程、turn、事件和后台任务能力。
 
 项目采用 Python 实现，围绕交互式终端、工具调用和可扩展的 Agent 运行流程组织代码，并为核心模块提供测试。
@@ -360,6 +362,8 @@ uv run agentcli --plain -p hello
 ## 能力说明
 
 各模块能力与需要外部服务验证的项目见 [docs/capabilities.md](docs/capabilities.md)。
+
+版本发布前的完整检查和打标签流程见 [docs/releasing.md](docs/releasing.md)。
 
 ## License
 
