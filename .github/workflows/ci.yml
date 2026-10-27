@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.11", "3.13"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          version: "0.13.5"
+          enable-cache: true
+
+      - name: Install locked dependencies
+        run: uv sync --extra dev --locked
+
+      - name: Lint
+        run: uv run python -m ruff check .
+
+      - name: Check formatting
+        run: uv run python -m ruff format --check .
+
+      - name: Test
+        run: uv run python -m pytest
+
+      - name: Check CLI entry points
+        run: |
+          uv run agentcli --version
+          uv run agentcli --help
+          uv run agentcli doctor --cwd .
+
+      - name: Build distributions
+        run: uv build
